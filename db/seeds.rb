@@ -32,7 +32,7 @@ car.remote_photo_url = photo1
 car.user = user1
 car.save
 
-car = Car.new(name: 'Ferrari Miura', make: 'Ferrari', model: 'Miura', year: 1970, color: 'red', seats: 2, location: '10236 Charing Cross Rd. Bel Air', transmission: 'manual', price: 200, user_id: 2, longitude: 34.076458, latitude: -118.4318042)
+car = Car.new(name: 'Lamborghini Miura', make: 'Lamborghini', model: 'Miura', year: 1970, color: 'red', seats: 2, location: '10236 Charing Cross Rd. Bel Air', transmission: 'manual', price: 200, user_id: 2, longitude: 34.076458, latitude: -118.4318042)
 car.remote_photo_url = photo2
 car.user = user2
 car.save
