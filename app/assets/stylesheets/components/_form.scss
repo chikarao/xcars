@@ -1,0 +1,59 @@
+@import "alert";
+@import "avatars";
+@import "badges";
+@import "cards_main";
+
+.btn-register {
+  width:200px;
+}
+
+.fa-white {
+  color: white;
+}
+/* General Styles */
+
+.contact-form {
+  margin-top:100px;
+  margin-bottom:150px;
+  color: white;
+  background-color: rgba(#2c3539, 0.9);
+  padding: 10px 20px 30px;
+  //  max-width:100%;
+  //  left: 50%;
+  //  margin-left: -260px;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+}
+
+#sign-in {
+  margin-top:200px;
+  margin-bottom:150px;
+}
+
+.contact-form h2 {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.contact-form p {
+  color: white;
+  margin-top: -20px;
+}
+
+.contact-form label {
+  font-weight: lighter;
+  font-size: large;
+  margin-bottom: 2px;
+  font-family: Arial, san-serif;
+}
+
+.contact-form .boolean {
+  font-size: x-small;
+}
+
+.contact-form a {
+  color: white;
+  text-align: right;
+  font-size: medium;
+}

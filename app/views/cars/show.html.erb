@@ -1,0 +1,115 @@
+<h1 class="text-center"><%= @car.name %></h1>
+
+<!--
+<div class="text-center padded">
+  <%#= link_to "Create a cocktail", new_cocktail_path, class: "btn btn-primary" %>
+</div>
+ -->
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-3 col-md-4 picture-box">
+      <div class="show-picture">
+        <% if @car.photo %>
+          <%= cl_image_tag @car.photo, height: 300, width: 400, crop: :fill, class: "img-responsive car-picture" %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end of first row element -->
+
+    <div class="col-xs-12 col-sm-3 col-md-4">
+      <div class="detail-box">
+        <div class="detail">
+        <!-- <ul class="show-list">
+            <li><strong>Make: </strong> <%= @car.make %></li>
+            <li><strong>Model: </strong><%= @car.model  %></li>
+            <li><strong>Year: </strong>   <%= @car.year  %></li>
+            <li><strong>Color: </strong><%= @car.color  %></li>
+            <li><strong>Seats: </strong>  <%= @car.seats  %></li>
+            <li><strong>Location: </strong> <%= @car.location  %></li>
+            <li><strong>Transmission: </strong><%= @car.transmission  %></li>
+            <li><strong>Price/day: €</strong><%#= "#{@car.price.to_i}"  %></li>
+         </ul> -->
+            <% [:make, :model, :year, :color, :seats, :location, :transmission].each do |a| %>
+              <dl class="dl-horizontal show-list">
+                <dt><%= "#{a.to_s.capitalize}: " %></dt>
+                <dd><%= @car.send a %></dd>
+              </dl>
+            <% end %>
+            <dl class="dl-horizontal show-list">
+                <dt>Price/day: </dt>
+                <dd><%= "€#{@car.price.to_i}" %></dd>
+              </dl>
+        </div>
+      </div>
+    </div>
+    <!-- end of second row element -->
+
+
+    <% if user_signed_in? && current_user == @car.user %>
+
+      <div class="col-xs-12 col-sm-3 col-md-4">
+        <h2>You are owner of this car!</h2>
+
+<!-- edit code goes in here -->
+
+         <%= link_to "Edit this Listing", edit_car_path(@car.id), class: "btn btn-info"  %>
+
+
+<!-- delete code goes in here -->
+          <%= link_to "Remove this Listing", car_path(@car.id), method: :delete, class: "btn btn-danger"  %>
+
+
+       <!-- end of conditional first element -->
+      </div>
+    <% else %>
+
+      <!--  THis is for Demo Deta -->
+      <div id="invisible" data-rubyvar1="<%= "2017-08-01" %>" data-rubyvar2="<%= "2017-08-02" %>"
+         data-rubyvar3="<%= "2017-08-03" %>" data-rubyvar4="<%= "2017-08-04" %>" data-rubyvar10="<%= "2017-08-10" %>"
+         data-rubyvar11="<%= "2017-08-11" %>" data-rubyvar12="<%= "2017-08-12" %>" data-rubyvar13="<%= "2017-08-13" %>"
+         data-rubyvar14="<%= "2017-08-14" %>" data-rubyvar14="<%= "2017-08-15" %>"
+      </div>
+
+
+      <div class="col-xs-12 col-sm-3 col-md-4 date-box">
+        <div class="date-section-container">
+          <%= simple_form_for [@car, @booking] do |f| %>
+            <%= f.input :start_date, as: :string, input_html: { class: 'datepicker' } %>
+            <%= f.input :end_date, as: :string, input_html: { class: 'datepicker' } %>
+            <%= f.input :car_id, :as => :hidden, :input_html => { :value => @car.id }  %>
+            <%= f.submit "Book this car!", class: "btn btn-primary", method: :post %>
+          <% end %>
+        </div>
+      </div>
+<!-- To Here: [07/12 Evening] Kouhei Changed this part Implemented buttons for Owner -->
+    <% end %>
+  <!-- end of if -->
+  </div>
+  <!-- end of row -->
+
+  <div class="row">
+    <div class="col-xs-12 map-container">
+      <div id="map" style="width: 100%; height: 400px;"></div>
+
+      <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        <% end %>
+      <% end %>
+          <!-- google map -->
+      </div>
+  </div>
+</div>

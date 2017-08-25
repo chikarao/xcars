@@ -1,0 +1,53 @@
+<!-- <h2>Views/Users/Cars/index.html.erb</h2> -->
+
+<h1 class="text-center">Your-Listing</h1>
+
+<div class="text-center">
+<h2><%= link_to "Register New Car", new_car_path, {class: "btn btn-primary"} %></h2>
+</div>
+
+<div class="">
+  <div class="row">
+
+    <% @cars.each do |car| %>
+
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <%= link_to car_path(car) do %>
+          <div class="card-body">
+
+            <% if car.photo.url %>
+              <div class="card-picture text-center" style="background-image: url(<%= car.photo.url %>);"></div>
+            <% else %>
+              <div class="card-picture text-center" style="background-image: url('https://s-media-cache-ak0.pinimg.com/736x/b0/60/7a/b0607ac790b5460db4566fce20caf802.jpg')"></div>
+            <% end %>
+
+            <% car_description = "#{car.year} #{car.make} #{car.model}" %>
+            <% currency = "€" %>
+            <% price = "#{currency}#{car.price.to_i}" %>
+            <% star = "👍 "  %>
+
+            <div class="card-footer">
+              <ul class="list-inline">
+                <li><%= car_description %></li>
+                <li class="price"><%= price %></li>
+                <li class="rating"><%= star * rand(1..4) %></li>
+              </ul>
+              <div class="share-links">
+                <a href="#" class="share-link bg-facebook">
+                  <i class="fa fa-facebook"></i>
+                </a>
+                <a href="#" class="share-link bg-twitter">
+                  <i class="fa fa-twitter"></i>
+                </a>
+                <a href="#" class="share-link bg-email">
+                  <i class="fa fa-envelope-o"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

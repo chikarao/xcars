@@ -1,0 +1,204 @@
+.show-title {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 60px;
+
+}
+
+// .show-list {
+
+// list-style-type: none;
+// font-size: 16px;
+// width: 200px;
+// padding: 15px;
+// }
+
+.show-list {
+  margin: 0;
+}
+
+.show-list ul {
+  margin: 0px;
+  width: 200px
+}
+
+.btn {
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.picture-box {
+  padding-left: 0px;
+}
+
+.show-picture {
+
+  border-radius: 7px;
+  margin-bottom: 10px;
+}
+
+.car-picture {
+
+ height: 270px;
+ border-radius:5px;
+}
+
+.date-box {
+  padding: {
+    right: 0;
+  }
+}
+
+.map-box {
+
+  padding: 0px;
+  margin: 20px;
+  width: 500px;
+
+}
+
+#map {
+
+  border-radius: 5px;
+}
+
+.map-container {
+
+  padding: {
+    bottom: 30px;
+    top: 15px;
+  }
+
+}
+
+.booking-info {
+  list-style-type: none;
+  font-size: 20px;
+  width: 200px;
+  padding: 15px;
+  height: 300px;
+
+}
+
+.booking-details {
+  font-size: 30px
+}
+
+// .date-section {
+//     position: relative;
+//     width: 303px;
+//     background: red;
+//     overflow: hidden;
+//     height: 200px;
+// }
+
+.date-section-container {
+
+  background-color: white;
+  padding: 10px;
+  border-radius: 7px;
+  height: 270px;
+
+  form {
+    position: relative;
+    width: 300px;
+    overflow: hidden;
+    height: 220px;
+    top: calc(50% - 110px);
+    left: calc(50% - 150px);
+
+    .btn {
+      width: 100%;
+      margin: 0;
+      margin-top: 15px;
+    }
+  }
+}
+
+.date-section form {
+
+  position: absolute;
+  // left: 50%;
+  // height: auto;
+  right: 87px;
+  top: 38px;
+    // -webkit-transform: translateX(-50%);
+    // -moz-transform: translateX(-50%);
+    // -ms-transform: translateX(-50%);
+    // -o-transform: translateX(-50%);
+    // transform: translateX(-50%);
+}
+
+
+.detail {
+  padding:5px;
+}
+
+.detail-box {
+
+  background-color: white;
+  border-radius: 7px;
+  height: 270px;
+}
+
+.detail dl {
+
+  padding: {
+  top: 6px;
+  right: 5px;
+  left: 17px;
+  bottom: 0px;
+}
+}
+
+
+.detail dt {
+
+  text-align: left;
+}
+
+.booking-info ul {
+  list-style-type: none;
+  font-size: 20px;
+  width: 200px;
+  padding: 15px;
+
+}
+
+.booking-details {
+  margin: 0px;
+  font-size: 20px;
+}
+
+
+.booking-link {
+margin: 20px;
+padding: 13px;
+background-color: gray;
+border-radius: 5px;
+
+}
+
+.booking-link:hover {
+
+background-color: #B3B3B3;
+}
+
+
+.booking-link a {
+  font-size:16px;
+  color: white;
+  text-decoration: none;
+}
+
+.action-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+
+
+

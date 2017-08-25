@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+      <div class="form-login contact-form">
+        <h1 class="text-center">Register New Car</h1>
+          <%= simple_form_for @car do |f| %>
+          <%= f.input :name %>
+          <%= f.input :make %>
+          <%= f.input :model %>
+          <%= f.input :year %>
+          <%= f.input :color %>
+          <%= f.input :seats %>
+          <%= f.input :location %>
+          <%= f.input :transmission %>
+          <%= f.input :price %>
+          <%= f.input :photo %>
+          <%= f.input :photo_cache, as: :hidden %>
+          <%= f.button :submit, "Register", {class:"btn-primary btn-register"} %>
+        <% end %>
+      </div>
+  </div>
+</div>

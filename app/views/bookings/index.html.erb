@@ -1,0 +1,57 @@
+<!-- <p class="text-muted">Find me in app/views/bookings/index.html.erb</p> -->
+<!-- Prefix      Verb     URI Pattern                               Controller#Action -->
+<!-- car_booking GET      /cars/:car_id/bookings/:id(.:format)      bookings#show -->
+<!-- You have @bookings (Your bookings record) here. -->
+
+<h1 class="text-center">Your Booking Information</h1>
+<div class="">
+  <div class="row">
+
+<!--[From Here] Changed from usual index page -->
+    <% @bookings.each do |booking| %>
+      <% car = booking.car %>
+        <div class="col-xs-12 col-sm-4 col-md-3">
+          <%= link_to car_booking_path(car.id, booking.id) do %>
+
+          <div class="card-body">
+            <% if car.photo.url %>
+            <div class="card-picture text-center" style="background-image: url(<%= car.photo.url %>);"></div>
+          <% else %>
+            <div class="card-picture text-center" style="background-image: url('https://s-media-cache-ak0.pinimg.com/736x/b0/60/7a/b0607ac790b5460db4566fce20caf802.jpg')"></div>
+            <% end %>
+
+            <% car_description = "#{car.year} #{car.make} #{car.model}" %>
+            <% @currency = "€" %>
+            <% price = "#{@currency}#{car.price.to_i}" %>
+            <% star = "👍 "  %>
+
+            <div class="card-footer">
+              <ul class="list-inline">
+                <li><%= car_description %></li>
+                <!-- <li class="price"><%#= price %></li> -->
+
+              </ul>
+
+              <div class="booking-date">
+                <p>Dates:  <%= booking.start_date.to_s :month_day_comma_year %> >> <%= booking.end_date.to_s :month_day_comma_year %></p>
+
+              </div>
+              <!-- <div class="share-links">
+                <a href="#" class="share-link bg-facebook">
+                  <i class="fa fa-facebook"></i>
+                </a>
+                <a href="#" class="share-link bg-twitter">
+                  <i class="fa fa-twitter"></i>
+                </a>
+                <a href="#" class="share-link bg-email">
+                  <i class="fa fa-envelope-o"></i>
+                </a>
+              </div> -->
+            </div>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>

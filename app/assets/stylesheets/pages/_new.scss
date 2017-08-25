@@ -1,0 +1,33 @@
+@import url("components/form.css");
+
+body {
+  margin: 0;
+  font-family: Open-sans, sans-serif;
+  margin-top: 50px;
+}
+h1 {
+  font-family: Raleway, Helvetica, sans-serif;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+}
+
+.form-login {
+  padding: 50px 20px;
+  background: #F6F6F6;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px #ECECEC;
+  margin: 50px;
+}
+.form-login h1 {
+  font-size: 22px;
+  margin-bottom: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+.form-login .btn {
+  width: 50%;
+  line-height: 30px;
+}

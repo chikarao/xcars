@@ -1,0 +1,84 @@
+<h1 class="text-center"><%= @car.name %></h1>
+<h2 class="show-title">Thank you for your booking!</h2>
+
+
+
+  <div class="container">
+    <div class="row">
+
+     <div class="col-xs-12 col-sm-3 col-md-4 picture-box">
+      <div class="show-picture">
+        <% if @car.photo %>
+          <%= cl_image_tag @car.photo, height: 300, width: 400, crop: :fill, class: "img-responsive car-picture" %>
+        <% end %>
+      </div>
+    </div>
+
+      <div class="col-xs-12 col-sm-3 col-md-4">
+         <div class="detail-box">
+              <div class="detail">
+              <!-- <ul class="show-list">
+                  <li><strong>Make: </strong> <%= @car.make %></li>
+                  <li><strong>Model: </strong><%= @car.model  %></li>
+                  <li><strong>Year: </strong>   <%= @car.year  %></li>
+                  <li><strong>Color: </strong><%= @car.color  %></li>
+                  <li><strong>Seats: </strong>  <%= @car.seats  %></li>
+                  <li><strong>Location: </strong> <%= @car.location  %></li>
+                  <li><strong>Transmission: </strong><%= @car.transmission  %></li>
+                  <li><strong>Price/day: €</strong><%#= "#{@car.price.to_i}"  %></li>
+               </ul> -->
+              <% [:make, :model, :year, :color, :seats, :location, :transmission].each do |a| %>
+                <dl class="dl-horizontal show-list">
+                  <dt><%= "#{a.to_s.capitalize}: " %></dt>
+                  <dd><%= @car.send a %></dd>
+                </dl>
+              <% end %>
+                <dl class="dl-horizontal show-list">
+                  <dt>Price/day: </dt>
+                  <dd><%= "€#{@car.price.to_i}" %></dd>
+                </dl>
+          </div>
+        </div>
+      </div>
+
+  <div class="col-xs-12 col-sm-3 col-md-4">
+      <% if @booking.user == current_user %>
+          <div class="detail-box">
+          <div class="detail">
+            <!-- <p class="booking-details">Booking Details</p> -->
+
+          <dl class="dl-horizontal show-list">
+            <dt>Pick-up Date: </dt>
+            <dd><%= @booking.start_date.to_s :month_day_comma_year %></dd>
+          </dl>
+          <dl class="dl-horizontal show-list">
+            <dt>Drop-off Date: </dt>
+            <dd><%= @booking.end_date.to_s :month_day_comma_year %></dd>
+          </dl>
+          <dl class="dl-horizontal show-list">
+            <dt>Price/day: </dt>
+            <dd><%= "€#{@currency}#{@car.price.to_i}" %></dd>
+          </dl>
+           <dl class="dl-horizontal show-list">
+            <dt>Total: </dt>
+            <dd><%= "€#{@car.price.to_i * (@booking.end_date - @booking.start_date).to_i }" %></dd>
+          </dl>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-box">
+    <div class="pull-right booking-link"><%= link_to 'Your Boooking List', bookings_index_path %></div>
+  </div>
+
+  <div class="action-box">
+    <%= simple_form_for [@car] do |f| %>
+    
+    <%= link_to "Cancel this Booking", car_booking_path(@booking.car_id, @booking.id), method: :delete, class: "btn btn-danger"  %>
+    
+    <% end %>
+  </div>
+
+</div>

@@ -1,0 +1,175 @@
+/* Main class */
+.navbar-wagon .fa {
+    margin-top: 10px;
+    display: inline-block;
+    font-size: 25px;
+    text-rendering: auto;
+}
+
+.navbar-wagon-search label {
+  color: WhiteSmoke;
+  font-weight: lighter;
+  margin-right: 5px;
+}
+
+.navbar-wagon-search{
+  top: 12px;
+  .btn{
+    top: -9px;
+    position: relative;
+  }
+}
+
+.date-search {
+}
+
+.fa-black {
+  color: black;
+}
+
+.navbar-wagon {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  background: #24292e;
+  transition: all 0.3s ease;
+  display: flex;
+  height: 80px;
+  padding: 0 30px;
+  align-items: center;
+  justify-content: space-between;
+  color: #7b7e81;
+}
+/* Optional class to fix the navbar on top */
+.navbar-wagon-fixed {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+}
+/* Navbar logo */
+.navbar-wagon-brand img {
+  width: 80px;
+}
+/* Navbar right section (with form, links, button) */
+.navbar-wagon-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* Navbar right section (with form, links, button) added by Sou July14*/
+.navbar-wagon-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left-side-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Navbar item */
+.navbar-wagon-item {
+  flex: 0 1 auto;
+  cursor: pointer;
+  padding: 0 20px;
+}
+/* Navbar standard link */
+.navbar-wagon-link {
+  color: #d8d9da;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.navbar-wagon-link:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+/* Navbar right button */
+.navbar-wagon-button {
+  margin-left: 10px;
+  padding: 0 20px;
+  border-radius: 20em;
+  line-height: 40px;
+  background-color: #D23333;
+  color: white;
+  font-size: 14px;
+  border: 2px solid #D23333;
+}
+
+.navbar-wagon-button:hover {
+  color: white;
+  background: #D23333;
+  border-color: #ac2626;
+}
+/* Navbar search form */
+.navbar-wagon-search {
+  flex: 0 1 300px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10px;
+  position: relative;
+}
+
+.navbar-wagon-search-btn {
+  line-height: 40px;
+  color: #E6E6E6;
+  border: none;
+  background: transparent;
+  position: absolute;
+  right: 14px;
+  top: -2px;
+  z-index: 1;
+}
+
+.navbar-wagon-search-input {
+  flex: 0 1 300px;
+  transition: all 0.15s ease;
+  line-height: 40px;
+  font-weight: lighter;
+  color: black;
+  border: 1px solid #E6E6E6;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: small;
+  outline: none;
+}
+
+.navbar-wagon-search-input:focus {
+  border: 1px solid #CCCCCC;
+}
+/* Navbar dropdown menu */
+.navbar-wagon-dropdown-menu {
+  margin-top: 15px;
+  box-shadow: 1px 1px 4px #E6E6E6;
+  border-color: #E6E6E6;
+}
+
+.navbar-wagon-dropdown-menu li > a {
+  transition: color 0.3s ease;
+  font-weight: lighter !important;
+  color: #999999 !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  padding: 10px 20px;
+}
+
+.navbar-wagon-dropdown-menu li > a:hover {
+  background: transparent !important;
+  color: black !important;
+}
+
+.navbar-wagon-dropdown-menu:before {
+  content: ' ';
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  right: 10px;
+  top: -6px;
+  background-color: white;
+  transform: rotate(45deg);
+  border-left: 1px solid #E6E6E6;
+  border-top: 1px solid #E6E6E6;
+}
+
+
