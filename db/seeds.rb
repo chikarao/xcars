@@ -47,7 +47,7 @@ car.remote_photo_url = photo4
 car.user = user4
 car.save
 
-car = Car.new(name: 'Lancruiser with the Works', make: 'Toyota', model: 'Landcruiser', year: 2016, color: 'Red', seats: 8, location: 'K29400 Bluewater Dr. Malibu', transmission: 'automatic', price: 100, user_id: 5)
+car = Car.new(name: 'Shelby Cobra', make: 'AC', model: 'Cobra', year: 1965, color: 'Blue', seats: 2, location: 'K29400 Bluewater Dr. Malibu', transmission: 'automatic', price: 100, user_id: 5)
 car.remote_photo_url = photo5
 car.user = user5
 car.save
