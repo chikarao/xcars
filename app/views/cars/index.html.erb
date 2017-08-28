@@ -6,7 +6,19 @@
       <h1>Xcars</h1>
       <p>OWN THE EXPERIENCE, NOT THE CAR</p>
       <!-- <a class="btn btn-warning btn-lg">BOOK IT</a> -->
+       <% if user_signed_in? == false %>
+          <!-- <div class="btn-primary banner-button banner-content hidden-md hidden-lg"> -->
+            <!-- Login text link -->
+
+               <%#= link_to t(".sign_up", default: "Join!"), new_user_registration_path, class: "b" %>
+          <!-- </div> -->
+        <%= link_to new_user_registration_path do %>
+            <button class="btn-mini btn btn-info" style="background-color: green; border-color: green; min-width: 200px;">Sign Up!</button>
+            <% end %>
+       <% end %>
+
     </div>
+
   </div>
 
 
