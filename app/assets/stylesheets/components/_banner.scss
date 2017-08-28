@@ -21,11 +21,16 @@
   margin-bottom: 20px;
 }
 
-// .banner-button {
+.banner-button {
+// border: solid green;
+background-color: green;
+// border-color: green;
+min-width: 200px;
+border: 1px solid green;
+}
 
-//   text-decoration: none;
-// }
-
-// .banner-button-text {
-//   padding:20px;
-// }
+.banner-button:hover {
+  opacity: 0.7;
+  background-color:green;
+border: 1px solid green;
+}
