@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new
     authorize @booking
     @car = Car.find(params[:car_id].to_i)
-    #recieve @car from cars/:car_id/show
+    #receive @car from cars/:car_id/show
     ## show page has an instance of @car
     #@user = current_user
   end

@@ -23,7 +23,7 @@
 
         <div class="col-xs-12 col-sm-4 col-md-3">
 
-        <%= link_to "Cancel", car_booking_path(booking.car_id, booking.id), method: :delete, class: "btn btn-danger"  %>
+        <%= link_to "Cancel", car_booking_path(booking.car_id, booking.id), method: :delete, class: "btn btn-danger", style:"margin-bottom:5px;" %>
       <!-- end of link to delete -->
 
           <%= link_to car_booking_path(car.id, booking.id) do %>
@@ -72,7 +72,7 @@
         </div>
         <!-- end col div -->
       <%# end %>
-      <!-- end of booking user and current user -->
+      <!-- end of booking adimin as current user -->
 
       <% elsif booking.user.id == current_user.id %>
 
@@ -126,7 +126,7 @@
 
 <% end %>
 
-<!-- end of if admin -->
+<!-- end of if current user = user -->
       <% end %>
 <!-- end of each looP -->
 

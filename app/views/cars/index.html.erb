@@ -6,57 +6,61 @@
       <h1>Xcars</h1>
       <p>OWN THE EXPERIENCE, NOT THE CAR</p>
       <!-- <a class="btn btn-warning btn-lg">BOOK IT</a> -->
-       <% if user_signed_in? == false %>
-          <!-- <div class="btn-primary banner-button banner-content hidden-md hidden-lg"> -->
-            <!-- Login text link -->
+         <% if user_signed_in? == false %>
+            <!-- <div class="btn-primary banner-button banner-content hidden-md hidden-lg"> -->
+              <!-- Login text link -->
 
-               <%#= link_to t(".sign_up", default: "Join!"), new_user_registration_path, class: "b" %>
-            <!-- </div> -->
-          <%= link_to new_user_registration_path do %>
+                 <%#= link_to t(".sign_up", default: "Join!"), new_user_registration_path, class: "b" %>
+              <!-- </div> -->
+            <%= link_to new_user_registration_path do %>
               <button class="btn-mini btn btn-info banner-button">Sign Up!</button>
           <% end %>
+          <!-- end of link do -->
        <% end %>
-
+       <!-- end of if user signed in -->
     </div>
-
+    <!-- banner content -->
   </div>
+  <!-- banner -->
+<% end %>
+<!-- END OF IF SEARCHED -->
 
-
-<!-- search box only for mobile -->
+<!-- SEARCH BOX BELOW BANNER ONLY FOR MOBILE -->
  <div class="container hidden-md hidden-lg" style="margin-top: 30px; display: flex; justify-content: space-around; ">
- <div class="text-center">
-   <form action="/">
-           <div class="text-center">
-              <div style="min-width: 300px; margin:0px 20px 5px 20px;">
-                <!-- <label for="Start Date">Search by Availability</label> -->
-                <input type="text" class="form-control navbar-wagon-search-input datepicker" name="start_date" id="start_date" placeholder="Start Date" style="min-width: 300px;">
-              </div>
-           </div>
+  <div class="text-center">
 
-            <div class="text-center">
-              <div style="max-width: 300px; margin:0px 20px 5px 20px;">
-                <!-- <label for="End Date"></label> -->
-                <input type="text" class="form-control navbar-wagon-search-input datepicker" name="end_date" id="end_date" placeholder="End Date">
-              </div>
-            </div>
+    <form action="/">
+     <div class="text-center">
+        <div style="min-width: 300px; margin:0px 20px 5px 20px;">
+          <!-- <label for="Start Date">Search by Availability</label> -->
+          <input type="text" class="form-control navbar-wagon-search-input datepicker" name="start_date" id="start_date" placeholder="Start Date" style="min-width: 300px;">
+        </div>
+     </div>
 
-            <div class="text-center">
-              <div style="max-width: 300px; margin:0px 20px 5px 20px;">
-                <!-- <label for="End Date"></label> -->
-                <input type="text" class="form-control navbar-wagon-search-input" name="search_text" id="search_text" placeholder="Area, Model, Maker">
-              </div >
-            </div>
+      <div class="text-center">
+        <div style="max-width: 300px; margin:0px 20px 5px 20px;">
+          <!-- <label for="End Date"></label> -->
+          <input type="text" class="form-control navbar-wagon-search-input datepicker" name="end_date" id="end_date" placeholder="End Date">
+        </div>
+      </div>
 
-            <div class="text-center">
-              <button type="submit" class="btn btn-warning btn-bordered btn-bordered-primary">Search by Availability</button>
-            </div>
-        </form>
+      <div class="text-center">
+        <div style="max-width: 300px; margin:0px 20px 5px 20px;">
+          <!-- <label for="End Date"></label> -->
+          <input type="text" class="form-control navbar-wagon-search-input" name="search_text" id="search_text" placeholder="Area, Model, Maker">
+        </div >
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-warning btn-bordered btn-bordered-primary">Search by Availability</button>
+      </div>
+    </form>
 
   </div>
-  </div>
+</div>
 
 
-<!-- LINK TO ACTION -->
+<!-- LINKS TO ACTION -->
 <div class="container text-center padded features" style="padding-top: 50px; padding-bottom: 50px;">
   <div class="row">
     <div class="col-xs-12 col-sm-4">
@@ -76,7 +80,14 @@
     </div>
   </div>
 </div>
-<% end %>
+<!-- END OF LINKS TO ACTION -->
+
+
+<!-- MAP WITH MARKERS FOR ALL CARS -->
+
+
+
+<!-- END OF MAP -->
 
 <!-- AVAILABLE CARS LIST-->
 <div class="container">
@@ -98,18 +109,16 @@
                <%= link_to "Delete", car_path(car.id), method: :delete, class: "btn btn-danger card-delete-button", style:"margin:5px; padding:5px" %>
 
                 <%= link_to "Edit", edit_car_path(car.id), method: :get, class: "btn btn-warning card-edit-button", style:"margin:5px; padding:5px; min-width:65px; max-height:42px;"  %>
-
-
           <%# end %>
       <% end %>
+      <!-- end of if user signed in -->
 
-
-        <!--  -->
-        <% if car.photo.url %>
-          <div class="card img-responsive" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= car.photo.url %>');">
-        <% else %>
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://s-media-cache-ak0.pinimg.com/736x/b0/60/7a/b0607ac790b5460db4566fce20caf802.jpg');">
-        <% end %>
+      <% if car.photo.url %>
+        <div class="card img-responsive" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= car.photo.url %>');">
+      <% else %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://s-media-cache-ak0.pinimg.com/736x/b0/60/7a/b0607ac790b5460db4566fce20caf802.jpg');">
+      <% end %>
+      <!-- end of if car photo url-->
 
 
         <% car_description = "#{car.year} #{car.make} #{car.model}" %>
@@ -123,19 +132,24 @@
            <!-- <img class="card-user avatar" src="<%#= car.user.photo.url %>"> -->
           <%= link_to "",  car_path(car) , class: "card-link" %>
         </div>
+        <!-- end of photo car if photo url exists -->
       </div>
+      <!-- end of photo if there is no car url somehow these area outside of the if car.photo.url-->
     <% end %>
+    <!-- end of if user signed in -->
   </div>
+  <!-- end of div col -->
 </div>
+<!-- end of container for car cards -->
 
 <!-- NEWS LETTER -->
 <% if @searched == false %>
-<div class="text-center padded" id="newsletter">
-  <h2>Get news from us</h2>
-  <p>Leave us your mail and get news from us</p>
-  <form class="form-inline">
-    <input type="email" placeholder="xcars@x.car" class="form-control">
-    <input type="submit" value="Subscribe" class="btn btn-primary btn-bordered btn-bordered-primary">
-  </form>
-</div>
+  <div class="text-center padded" id="newsletter">
+    <h2>Get news from us</h2>
+    <p>Leave us your mail and get news from us</p>
+    <form class="form-inline">
+      <input type="email" placeholder="xcars@x.car" class="form-control">
+      <input type="submit" value="Subscribe" class="btn btn-primary btn-bordered btn-bordered-primary">
+    </form>
+  </div>
 <% end %>
