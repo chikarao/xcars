@@ -46,3 +46,4 @@ source "https://rails-assets.org" do
 end
 
 gem 'faker'
+gem "pundit"

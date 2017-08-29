@@ -1,15 +1,22 @@
 <!-- <h2>Views/Users/Cars/index.html.erb</h2> -->
 
+<%# if policy(Car).index? %>
+
+
 <h1 class="text-center">Your-Listing</h1>
 
 <div class="text-center">
-<h2><%= link_to "Register New Car", new_car_path, {class: "btn btn-primary"} %></h2>
+<h2><%= link_to "Register a New Car", new_car_path, {class: "btn btn-primary"} %></h2>
 </div>
 
 <div class="">
   <div class="row">
 
     <% @cars.each do |car| %>
+
+
+    <!-- Patch for Pundit. Can't find way to authorize car in a sub class of car controller under user controller-->
+    <% if car.user == current_user %>
 
       <div class="col-xs-12 col-sm-4 col-md-3">
         <%= link_to car_path(car) do %>
@@ -46,8 +53,11 @@
             </div>
           </div>
         <% end %>
+        <% end %>
       </div>
     <% end %>
 
   </div>
 </div>
+
+<%# end %>

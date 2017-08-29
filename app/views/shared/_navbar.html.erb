@@ -57,6 +57,14 @@
           <li>
             <!-- <a href="#">Dashboard</a> -->
           </li>
+
+         <li style="padding:10px; margin-left: 10px; color:#999999;">
+
+          <% if user_signed_in? %>
+            <%= current_user.email %>
+          <% end %>
+        </li>
+
           <li>
             <%= link_to('Logout', destroy_user_session_path, method: :delete) %> </li>
         </ul>
@@ -79,11 +87,19 @@
          <% if user_signed_in? %>
            <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/50x50" %>
            <%= image_tag avatar_url, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+
         <!-- Login text link -->
          <% else %>
            <%= link_to t(".sign_in", default: "Login / Sign-up"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <% end %>
           <!-- <a href="#">Some mobile link</a> -->
+        </li>
+
+        <li style="padding:10px; margin-left: 10px; color:#999999;">
+
+          <% if user_signed_in? %>
+            <%= current_user.email %>
+          <% end %>
         </li>
 
         <li>
@@ -146,10 +162,13 @@
 
         <li>
           <% if user_signed_in? %>
-            <%= link_to('Logout', destroy_user_session_path, method: :delete) %> </li>
+            <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+            <!-- </li> -->
           <% end %>
           <!-- <a href="#">Other one</a> -->
         </li>
+
+
       </ul>
     </div>
   </div>

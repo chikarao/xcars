@@ -14,10 +14,13 @@ class BookingsController < ApplicationController
     #          @bookings.each do |b|
     #            @cars << Car.where('id = ?', b.car_id).first
     #          end
+
+     @bookings = policy_scope(Booking).order(created_at: :desc)
   end
 
   def new
     @booking = Booking.new
+    authorize @booking
     @car = Car.find(params[:car_id].to_i)
     #recieve @car from cars/:car_id/show
     ## show page has an instance of @car
@@ -29,6 +32,7 @@ class BookingsController < ApplicationController
     @car = Car.find(params[:car_id].to_i)
     @booking = Booking.new(strong_params)
     @booking.user = current_user
+    authorize @booking
     #create Booking
     if @booking.save
       redirect_to car_booking_path(@car.id, @booking.id)
@@ -41,6 +45,7 @@ class BookingsController < ApplicationController
     @car = Car.find(params[:car_id].to_i)
     if params[:id]
       @booking = Booking.find(params[:id].to_i)
+      authorize @booking
     else
       @booking = Booking.new
     end
@@ -52,13 +57,22 @@ class BookingsController < ApplicationController
 
   def destroy
     booking = Booking.find(params[:id])
-    if booking.user == current_user
+
+    authorize booking
+
+    if booking.user == current_user && current_user.admin != true
       booking.destroy
       redirect_to bookings_index_path
-    else
+    elsif current_user.admin == true
+      booking.destroy
+      redirect_to bookings_index_path
+      else
       # throw pop-up with FU message
       redirect_to root_path
     end
+
+
+
   end
 
 

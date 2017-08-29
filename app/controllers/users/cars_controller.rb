@@ -4,6 +4,9 @@ class Users::CarsController < ApplicationController
 
   def index
     @cars = Car.where(user_id: current_user.id)
+    @cars = policy_scope(Car).order(created_at: :desc)
+
+     # authorize @cars
   end
 
   # def show

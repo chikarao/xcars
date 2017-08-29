@@ -84,11 +84,33 @@
     <% @cars.each do |car| %>
       <div class="col-xs-12 col-sm-4 card-container">
         <!-- insert <div class="card"> -->
+
+
+          <!-- <div class="btn-primary banner-button banner-content hidden-md hidden-lg"> -->
+            <!-- Login text link -->
+
+               <%#= link_to t(".sign_up", default: "Join!"), new_user_registration_path, class: "b" %>
+            <!-- </div> -->
+
+        <!-- admin delete and edit buttons -->
+      <% if user_signed_in? == true && current_user.admin == true %>
+          <%# if policy(@car).destroy? %>
+               <%= link_to "Delete", car_path(car.id), method: :delete, class: "btn btn-danger card-delete-button", style:"margin:5px; padding:5px" %>
+
+                <%= link_to "Edit", edit_car_path(car.id), method: :get, class: "btn btn-warning card-edit-button", style:"margin:5px; padding:5px; min-width:65px; max-height:42px;"  %>
+
+
+          <%# end %>
+      <% end %>
+
+
+        <!--  -->
         <% if car.photo.url %>
           <div class="card img-responsive" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= car.photo.url %>');">
         <% else %>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://s-media-cache-ak0.pinimg.com/736x/b0/60/7a/b0607ac790b5460db4566fce20caf802.jpg');">
         <% end %>
+
 
         <% car_description = "#{car.year} #{car.make} #{car.model}" %>
         <% @currency = "€" %>

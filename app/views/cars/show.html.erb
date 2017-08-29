@@ -52,12 +52,21 @@
         <h2>You are renting out this car!</h2>
 
 <!-- edit code goes in here -->
+<!-- pundit authorization -->
+
+    <% if policy(Car).edit? %>
 
          <%= link_to "Edit this Listing", edit_car_path(@car.id), class: "btn btn-info"  %>
 
+    <% end %>
 
 <!-- delete code goes in here -->
+<!-- pundit authorization -->
+    <% if policy(Car).destroy? %>
+
+
           <%= link_to "Remove this Listing", car_path(@car.id), method: :delete, class: "btn btn-danger"  %>
+    <% end %>
 
 
        <!-- end of conditional first element -->
