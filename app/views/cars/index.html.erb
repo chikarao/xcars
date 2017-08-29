@@ -84,7 +84,12 @@
 
 
 <!-- MAP WITH MARKERS FOR ALL CARS -->
-
+ <div class="col-xs-12 col-md-12">
+  <div class="text-center">
+        <p class="h2">Where the Cars Rest</p>
+        <P id="mapindex"></P>
+  </div>
+</div>
 
 
 <!-- END OF MAP -->
@@ -153,3 +158,88 @@
     </form>
   </div>
 <% end %>
+<!-- end of news letter -->
+<!-- END OF HTML -->
+
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?language=en&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+////////////////////////////////////////////////
+
+   $(document).on('ready', function () {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+    ///////////////////////////////////////////////////////
+    //////////////Draw Map/////////////////////////////
+    var handler = Gmaps.build('Google', {
+      markers: {
+        clusterer: undefined
+      }
+    });
+    handler.buildMap({
+      internal: {
+        id: 'mapindex'
+      }
+    }, function () {
+      markers = handler.addMarkers([
+        // {
+        //   "lat": "<%#= current_user.latitude %>",
+        //   "lng": "<%#= current_user.longitude %>"
+        // },
+        <% @cars.each do |car|  %>
+        {
+          "lat": "<%= car.latitude %>",
+          "lng": "<%= car.longitude %>",
+          "picture": {
+            "url": "<%= asset_path('car_icon.png') %>",
+            "width": 40,
+            "height": 40
+          },
+          "infowindow": '<p style="font-family: Open-sans, sans-serif; font-style:bold; font-size: 15px;"><%= car.year %> <%= car.make %> <%= car.model %></p> <p style="max-width=100px; max-height:200px;"><a href="/cars/' + <%= car.id %> + '"class="btn btn-primary button-show-details"><IMG BORDER="0" ALIGN="Left" SRC="<%= car.photo %>"></a></p>'
+
+           // "infowindow": '<%#= link_to car.name, "https://www.google.com/maps/dir/?api=1&destination=#{car.latitude},#{car.longitude}&travelmode=walking", {target: "_blank", class: "h6 text-danger"} %><p><%= car.year %></p><p><%= car.make %><%= car.model %></p>'
+        },
+        <% end %>
+      ]);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setCenter(new google.maps.LatLng("34.10778", "-118.44472"));
+      handler.getMap().setZoom(10);
+    });
+  })
+
+
+
+// TO BE USED WHEN USER GEOLOCATION IMPLETEMENTED
+  ////////////////////
+  // var options = {
+  //   enableHighAccuracy: true,
+  //   timeout : 10000,
+  //   maximumAge: 0
+  // };
+
+  // function successGetPosition(position){
+  //   alert( "Successfully Got Current Location" );
+  //   alert( "lat:" + position.coords.latitude + ", lng:" + position.coords.longitude);
+  //   window.location.href = "/users/<%= current_user.id %>/requests/?lat=" + position.coords.latitude + "&lng=" + position.coords.longitude;
+  // };
+
+  // function failGetPosition(){
+  //   alert( "Failed. Your browser does not support Geolocation." );
+  // };
+
+  // $('.currentLocation').click(function(){
+  //   if( navigator.geolocation ){   //Get Current Location
+  //     navigator.geolocation.getCurrentPosition(successGetPosition, failGetPosition, options);
+  //   }
+  // });
+     // // successGetPosition = (position) -> //   window.location.href = "/shops/searches?latitude=#{position.coords.latitude}&longitude=#{position.coords.longitude}" // // options = //   enableHighAccuracy: true //
+    // failGetPosition = (error) -> //   switch error.code
+
+
+
+</script>
