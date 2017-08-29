@@ -59,7 +59,7 @@ for i in 1..9 do
   index = 0
   puts "Happy Scraping! Category #{i} Start!"
 
-  html_file = open("c/#{i}")
+  html_file = open("http://xcars.co/carcategory/#{i}")
   html_doc = Nokogiri::HTML(html_file)
 
   html_doc.search('.mix-details').each do |element|
