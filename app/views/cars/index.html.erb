@@ -86,8 +86,8 @@
 <!-- MAP WITH MARKERS FOR ALL CARS -->
  <div class="col-xs-12 col-md-12">
   <div class="text-center">
-        <p class="h2">Where the Cars Rest</p>
-        <P id="mapindex"></P>
+    <p class="h2">Where the Cars Rest</p>
+    <P id="mapindex"></P>
   </div>
 </div>
 
@@ -175,6 +175,11 @@
     });
     ///////////////////////////////////////////////////////
     //////////////Draw Map/////////////////////////////
+
+    // var min = .9999999;
+    // var max = 1.000001;
+    // var randomNumber = (Math.random() * (max - min) + min);
+
     var handler = Gmaps.build('Google', {
       markers: {
         clusterer: undefined
@@ -193,8 +198,18 @@
         // },
         <% @cars.each do |car|  %>
         {
-          "lat": "<%= car.latitude %>",
-          "lng": "<%= car.longitude %>",
+          <% x = (rand * (1.00001 - 0.99999) + 0.99999) %>
+          <% if car.latitude && car.longitude %>
+            <% carlat = car.latitude * x %>
+            <% carlng = car.longitude * x %>
+          <% else %>
+            <% carlat = car.latitude %>
+            <% carlng = car.longitude %>
+          <% end %>
+
+
+          "lat": "<%= carlat %>",
+          "lng": "<%= carlng %>",
           "picture": {
             "url": "<%= asset_path('car_icon.png') %>",
             "width": 40,
