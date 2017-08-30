@@ -5,9 +5,9 @@ class CarPolicy < ApplicationPolicy
     end
   end
 
-  # def index
-  #   return true
-  # end
+  def index?
+    return true
+  end
 
   def edit?
     return true

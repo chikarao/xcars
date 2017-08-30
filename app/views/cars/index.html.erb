@@ -109,7 +109,7 @@
             <!-- </div> -->
 
         <!-- admin delete and edit buttons -->
-      <% if user_signed_in? == true && current_user.admin == true %>
+      <% if user_signed_in? == true && current_user.admin? %>
           <%# if policy(@car).destroy? %>
                <%= link_to "Delete", car_path(car.id), method: :delete, class: "btn btn-danger card-delete-button", style:"margin:5px; padding:5px" %>
 
@@ -178,6 +178,7 @@
     var handler = Gmaps.build('Google', {
       markers: {
         clusterer: undefined
+         // draggable:true,
       }
     });
     handler.buildMap({
@@ -199,15 +200,18 @@
             "width": 40,
             "height": 40
           },
-          "infowindow": '<p style="font-family: Open-sans, sans-serif; font-style:bold; font-size: 15px;"><%= car.year %> <%= car.make %> <%= car.model %></p> <p style="max-width=100px; max-height:200px;"><a href="/cars/' + <%= car.id %> + '"class="btn btn-primary button-show-details"><IMG BORDER="0" ALIGN="Left" SRC="<%= car.photo %>"></a></p>'
+          "infowindow": '<p style="font-family: Open-sans, sans-serif; font-style:bold; font-size: 15px;"><%= car.year %> <%= car.make %> <%= car.model %></p> <p style="max-width=300px; max-height:300px;"><a href="/cars/' + <%= car.id %> + '"class="btn btn-primary button-show-details"><IMG BORDER="0" ALIGN="center" SRC="<%= car.photo %>"></a></p>'
 
            // "infowindow": '<%#= link_to car.name, "https://www.google.com/maps/dir/?api=1&destination=#{car.latitude},#{car.longitude}&travelmode=walking", {target: "_blank", class: "h6 text-danger"} %><p><%= car.year %></p><p><%= car.make %><%= car.model %></p>'
         },
         <% end %>
       ]);
+
+
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
       handler.getMap().setCenter(new google.maps.LatLng("34.10778", "-118.44472"));
+      //centered around beverly glen for aesthetics -- center of the seed data
       handler.getMap().setZoom(10);
     });
   })

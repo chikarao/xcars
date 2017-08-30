@@ -6,7 +6,8 @@ class CarsController < ApplicationController
       @searched = true
       @cars = Car.where('lower(name) LIKE lower(?) OR lower(model) LIKE lower(?) OR lower(make) LIKE lower(?) OR lower(location) LIKE lower(?)', "%#{params[:search_text]}%", "%#{params[:search_text]}%", "%#{params[:search_text]}%", "%#{params[:search_text]}%")
 
-      @cars = policy_scope(Car).order(created_at: :desc)
+      policy_scope(Car).order(created_at: :desc)
+
 
     elsif params[:end_date]
       #implement
@@ -18,13 +19,13 @@ class CarsController < ApplicationController
            end
            @cars << car
 
-           @cars = policy_scope(Car).order(created_at: :desc)
+           policy_scope(Car).order(created_at: :desc)
         end
       end
     else
       @cars = Car.all
 
-      @cars = policy_scope(Car).order(created_at: :desc)
+      policy_scope(Car).order(created_at: :desc)
 
       @searched = false
     end
