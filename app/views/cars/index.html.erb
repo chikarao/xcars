@@ -111,7 +111,7 @@
         <!-- admin delete and edit buttons -->
       <% if user_signed_in? == true && current_user.admin? %>
           <%# if policy(@car).destroy? %>
-               <%= link_to "Delete", car_path(car.id), method: :delete, class: "btn btn-danger card-delete-button", style:"margin:5px; padding:5px" %>
+               <%= link_to "Delete", car_path(car.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger card-delete-button", style:"margin:5px; padding:5px" %>
 
                 <%= link_to "Edit", edit_car_path(car.id), method: :get, class: "btn btn-warning card-edit-button", style:"margin:5px; padding:5px; min-width:65px; max-height:42px;"  %>
           <%# end %>
@@ -176,9 +176,6 @@
     ///////////////////////////////////////////////////////
     //////////////Draw Map/////////////////////////////
 
-    // var min = .9999999;
-    // var max = 1.000001;
-    // var randomNumber = (Math.random() * (max - min) + min);
 
     var handler = Gmaps.build('Google', {
       markers: {
@@ -206,6 +203,7 @@
             <% carlat = car.latitude %>
             <% carlng = car.longitude %>
           <% end %>
+          // add random number to coorinates to offset markers with same location. also needed if user searches by city or other general location
 
 
           "lat": "<%= carlat %>",
@@ -215,7 +213,7 @@
             "width": 40,
             "height": 40
           },
-          "infowindow": '<p style="font-family: Open-sans, sans-serif; font-style:bold; font-size: 15px;"><%= car.year %> <%= car.make %> <%= car.model %></p> <p style="max-width=300px; max-height:300px;"><a href="/cars/' + <%= car.id %> + '"class="btn btn-primary button-show-details"><IMG BORDER="0" ALIGN="center" SRC="<%= car.photo %>"></a></p>'
+          "infowindow": '<p style="font-family: Open-sans, sans-serif; font-style:bold; font-size: 15px;"><%= car.year %> <%= car.make %> <%= car.model %></p> <p style="font-family: Open-sans, sans-serif; font-style:bold; font-size: 15px;"> €<%= car.price.to_i %> per day</p> <p style="max-width=500px; max-height:500px;"><a href="/cars/' + <%= car.id %> + '"class="btn btn-primary button-show-details"><IMG BORDER="0" ALIGN="center" SRC="<%= car.photo %>"></a></p>'
 
            // "infowindow": '<%#= link_to car.name, "https://www.google.com/maps/dir/?api=1&destination=#{car.latitude},#{car.longitude}&travelmode=walking", {target: "_blank", class: "h6 text-danger"} %><p><%= car.year %></p><p><%= car.make %><%= car.model %></p>'
         },
@@ -233,7 +231,7 @@
 
 
 
-// TO BE USED WHEN USER GEOLOCATION IMPLETEMENTED
+// TO BE USED WHEN USER GEOLOCATION IMPLEMENTED
   ////////////////////
   // var options = {
   //   enableHighAccuracy: true,
