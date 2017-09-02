@@ -15,8 +15,32 @@ class UserMailer < ApplicationMailer
     @user = user
     @car_name = car_name
     # byebug
-    @message = "Thanks for your listing your #{car_name}!"
+    @message = "Thanks for your listing your #{@car_name}!"
     mail(to: @user.email, subject: 'Thanks for your listing!')
+  end
+
+def booking_creation_confirmation(start_date, end_date, car_user, car_name, booking_user)
+    @car_user = car_user
+    @car_name = car_name
+    @start_date = start_date
+    @end_date = end_date
+    @booking_user = booking_user
+
+    # byebug
+    @message = "Thanks for booking the #{car_name}! Your booking is from #{@start_date} to #{@end_date}."
+    mail(to: @booking_user.email, subject: "Thanks for your booking the #{car_name}!")
+  end
+
+def booking_creation_lister_confirmation(start_date, end_date, car_user, car_name, booking_user)
+    @car_user = car_user
+    @car_name = car_name
+    @start_date = start_date
+    @end_date = end_date
+    @booking_user = booking_user
+
+    # byebug
+    @message = "Your #{@car_name} has been booked! The booking is from #{@start_date} to #{@end_date}."
+    mail(to: @car_user.email, subject: "Your #{@car_name} has been booked!")
   end
 
 

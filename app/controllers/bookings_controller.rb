@@ -35,7 +35,18 @@ class BookingsController < ApplicationController
     authorize @booking
     #create Booking
     if @booking.save
+
+      if @car.name
+        UserMailer.booking_creation_confirmation(@booking.start_date, @booking.end_date, @booking.car.user, @car.name, @booking.user).deliver_now
+        UserMailer.booking_creation_lister_confirmation(@booking.start_date, @booking.end_date, @booking.car.user, @car.name, @booking.user).deliver_now
+      elsif @car.make
+        UserMailer.booking_creation_confirmation(@booking.start_date, @booking.end_date, @booking.car.user, @car.make, @booking.user).deliver_now
+        UserMailer.booking_creation_lister_confirmation(@booking.start_date, @booking.end_date, @booking.car.user, @car.make, @booking.user).deliver_now
+      end
+      # some listings do not have a car name so use make if no name
+
       redirect_to car_booking_path(@car.id, @booking.id)
+
     else
       render 'cars/show'
     end

@@ -13,7 +13,7 @@
                  <%#= link_to t(".sign_up", default: "Join!"), new_user_registration_path, class: "b" %>
               <!-- </div> -->
             <%= link_to new_user_registration_path do %>
-              <button class="btn-mini btn btn-info banner-button">Sign Up!</button>
+              <button class="btn-mini btn btn-info banner-button" style="font-weight:bold;">Sign-up Now!</button>
           <% end %>
           <!-- end of link do -->
        <% end %>
@@ -148,16 +148,16 @@
 <!-- end of container for car cards -->
 
 <!-- NEWS LETTER -->
-<% if @searched == false %>
-  <div class="text-center padded" id="newsletter">
+<%# if @searched == false %>
+ <!--  <div class="text-center padded" id="newsletter">
     <h2>Get news from us</h2>
     <p>Leave us your mail and get news from us</p>
     <form class="form-inline">
       <input type="email" placeholder="xcars@x.car" class="form-control">
       <input type="submit" value="Subscribe" class="btn btn-primary btn-bordered btn-bordered-primary">
     </form>
-  </div>
-<% end %>
+  </div> -->
+<%# end %>
 <!-- end of news letter -->
 <!-- END OF HTML -->
 

@@ -65,6 +65,11 @@
           <% end %>
         </li>
 
+        <li>
+         <%= link_to('Edit Profile', edit_user_registration_path, method: :get) %>
+
+        </li>
+
           <li>
             <%= link_to('Logout', destroy_user_session_path, method: :delete) %> </li>
         </ul>
@@ -159,6 +164,11 @@
               <button type="submit" class="btn btn-warning btn-bordered btn-bordered-primary">Search by Availability</button>
             </div>
         </form>
+
+         <li>
+         <%= link_to('Edit Profile', edit_user_registration_path, method: :get) %>
+
+        </li>
 
         <li>
           <% if user_signed_in? %>
