@@ -27,4 +27,8 @@ module RailsXcars
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
   end
+
+# config.action_mailer.delivery_method = :postmark
+# config.action_mailer.postmark_settings = { :api_token => "72ee153d-82c2-4c26-9cf6-38c1ae44e52f" }
+
 end
