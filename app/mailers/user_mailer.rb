@@ -10,4 +10,14 @@ class UserMailer < ApplicationMailer
     @greeting = "Thanks for signing-up! Welcome to the world of X-cars."
     mail(to: @user.email, subject: 'Welcome to Xcars!')
   end
+
+  def car_creation_confirmation(user, car_name)
+    @user = user
+    @car_name = car_name
+    # byebug
+    @message = "Thanks for your listing your #{car_name}!"
+    mail(to: @user.email, subject: 'Thanks for your listing!')
+  end
+
+
 end

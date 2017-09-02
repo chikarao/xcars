@@ -61,6 +61,7 @@ class CarsController < ApplicationController
 
 
     if @car.save
+      UserMailer.car_creation_confirmation(@car.user, @car.name).deliver_now
       redirect_to users_cars_path
     else
       render :new

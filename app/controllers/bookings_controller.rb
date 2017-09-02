@@ -70,9 +70,6 @@ class BookingsController < ApplicationController
       # throw pop-up with FU message
       redirect_to root_path
     end
-
-
-
   end
 
 
